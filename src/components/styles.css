@@ -42,7 +42,9 @@ main {
   border-radius: 10px;
   padding: 2em;
   width: 80%;
+  display: block;
 }
+
 
 section {
   margin: 1em 0;
@@ -89,12 +91,13 @@ textarea {
 
 footer{
   position: relative;
-  bottom: 0;
+  bottom: -465px;
   width: 100%;
   background-color: rgb(110,110,110);
   text-align: center;
   color: rgb(251, 251, 251);
   padding: 0.5em;
+  transition: bottom 1s;
 }
 
 a{
@@ -103,3 +106,26 @@ a{
   font-size: 0.9em;
 }
   
+footer.visible{
+  bottom: 0;
+}
+
+
+
+.display {
+  background-color: rgb(255, 255, 255);
+  
+}
+
+.display h2 {
+  color: rgb(43, 43, 43);
+}
+
+.display p {
+  color: rgb(43, 43, 43);
+}
+
+.display-box {
+ display: block;
+  
+}
