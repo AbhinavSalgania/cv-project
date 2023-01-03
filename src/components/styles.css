@@ -89,6 +89,8 @@ textarea {
 
 
 
+
+
 footer{
   position: relative;
   bottom: -465px;
@@ -112,20 +114,26 @@ footer.visible{
 
 
 
-.display {
+
+
+
+
+
+
+
+.resume-box {
   background-color: rgb(255, 255, 255);
   
 }
 
-.display h2 {
+.resume-box h2 {
   color: rgb(43, 43, 43);
 }
 
-.display p {
+.resume-box p {
   color: rgb(43, 43, 43);
 }
 
-.display-box {
- display: block;
-  
+.resume-box h1{
+  color: rgb(43, 43, 43);
 }

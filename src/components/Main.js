@@ -1,5 +1,5 @@
 import React from 'react';
-import Display from './Display';
+import Resume from './Resume';
 import './styles.css';
 
 class Main extends React.Component {
@@ -19,9 +19,15 @@ class Main extends React.Component {
     }
 
     handleChange = (event) => {
-        const {name, value} = event.target;
-        this.setState({ [name]: value });
-    }
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState((prevState) => ({
+            ...prevState,
+            [name]: value
+          }));
+          
+      }
+      
   
     render() {
       return (
@@ -33,22 +39,25 @@ class Main extends React.Component {
                     <input
                         type="text"
                         id="name"
+                        name="name"
                         placeholder="John Doe"
-                        onChange= {this.handleChange}
-                    />
+                        onChange= {this.handleChange}             />
+                    
                     <br />
                     <label htmlFor="email">Email:</label>
                     <input
                         type="email"
                         id="email"
+                        name = "email"
                         placeholder="johndoe@email.com"
-                        onChange= {this.handleChange}
-                    />
+                        onChange= {this.handleChange}             />
+                    
                     <br />
                     <label htmlFor="phone">Phone:</label>
                     <input
                         type="tel"
                         id="phone"
+                        name = "phone"
                         placeholder="xxx-xxx-xxx"
                         onChange= {this.handleChange}              />
                 </section>
@@ -58,6 +67,7 @@ class Main extends React.Component {
                     <input
                         type="text"
                         id="school"
+                        name = "school"
                         placeholder="Harvard"
                         onChange= {this.handleChange}              />
                     <br />
@@ -65,13 +75,15 @@ class Main extends React.Component {
                     <input
                         type="text"
                         id="degree"
+                        name = "degree"
                         placeholder="Bachelors"
                         onChange= {this.handleChange}              />
                     <br />
-                    <label htmlFor="field-of-study">Field of Study:</label>
+                    <label htmlFor="fieldOfStudy">Field of Study:</label>
                     <input
                         type="text"
-                        id="field-of-study"
+                        id="fieldOfStudy"
+                        name = "fieldOfStudy"
                         placeholder="Gender Studies"
                         onChange= {this.handleChange}              />
                 </section>
@@ -81,6 +93,7 @@ class Main extends React.Component {
                     <input
                         type="text"
                         id="company"
+                        name = "company"
                         placeholder="Tesla"
                         onChange= {this.handleChange}              />
                     <br />
@@ -88,18 +101,20 @@ class Main extends React.Component {
                     <input
                         type="text"
                         id="position"
+                        name = "position"
                         placeholder="Robot Maker"
                         onChange= {this.handleChange}              />
                     <br />
                     <label htmlFor="description">Description:</label>
                     <textarea 
                         id="description" 
+                        name = "description"
                         placeholder = "lorem ipsum dolem Cupidatat sunt anim incididunt nisi labore sunt nulla Lorem elit irure. Aliquip quis excepteur et nostrud enim irure nostrud officia" 
                         onChange= {this.handleChange}                />
                 </section>
             </div>
             <div className = "display-box">
-            <Display
+            <Resume
                 name={this.state.name}
                 email={this.state.email}
                 phone={this.state.phone}
@@ -114,6 +129,7 @@ class Main extends React.Component {
         </main>
         );
     }
+      
 }
     
 export default Main;
