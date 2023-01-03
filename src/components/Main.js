@@ -113,18 +113,18 @@ class Main extends React.Component {
                         onChange= {this.handleChange}                />
                 </section>
             </div>
-            <div className = "display-box">
-            <Resume
-                name={this.state.name}
-                email={this.state.email}
-                phone={this.state.phone}
-                school={this.state.school}
-                degree={this.state.degree}
-                fieldOfStudy={this.state.fieldOfStudy}
-                company={this.state.company}
-                position={this.state.position}
-                description={this.state.description}
-                />
+            <div className = "resume-box">
+                <Resume
+                    name={this.state.name}
+                    email={this.state.email}
+                    phone={this.state.phone}
+                    school={this.state.school}
+                    degree={this.state.degree}
+                    fieldOfStudy={this.state.fieldOfStudy}
+                    company={this.state.company}
+                    position={this.state.position}
+                    description={this.state.description}
+                    />
             </div>
         </main>
         );
