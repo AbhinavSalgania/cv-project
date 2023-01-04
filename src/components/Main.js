@@ -22,6 +22,13 @@ class Main extends React.Component {
         }));
     };
 
+    deleteEducationItem = (index) => {
+        console.log(index)
+        this.setState((prevState) => ({
+            educationItems: prevState.educationItems.filter((_, i) => i !== index)
+        }));
+    };
+
     addExperienceItem = () => { 
         this.setState((prevState) => ({
             experienceItems: [...prevState.experienceItems, {
@@ -30,7 +37,15 @@ class Main extends React.Component {
         }));
     };
 
+    deleteExperienceItem = (index) => {
+        console.log(index)
+        this.setState((prevState) => ({
+            experienceItems: prevState.experienceItems.filter((_, i) => i !== index)
+        }));
+    };
+    
     handleChange = (event, arrayType, index) => {
+        console.log(index)
         const name = event.target.name;
         const value = event.target.value;
 
@@ -51,6 +66,7 @@ class Main extends React.Component {
         this.setState((prevState) => ({ ...prevState,   [name]: value })
     );
 }
+
 
     render() {
       return (
@@ -125,9 +141,16 @@ class Main extends React.Component {
                     />
                 </div>
                 ))}
-                <button type="button" onClick={this.addEducationItem}>
-                Add Education
-                </button>
+            <div>
+
+            {this.state.educationItems.length > 1 && (
+                <button onClick={() => this.deleteEducationItem(this.state.educationItems.length - 1)}>Delete</button>
+            )}
+            <button onClick={this.addEducationItem}>Add</button>
+               
+            
+            </div>
+            
             </section>
         <section>
             <h2>Experience</h2>
@@ -169,9 +192,15 @@ class Main extends React.Component {
                     />
               </div>
             ))}
-            <button type="button" onClick={this.addExperienceItem}>
-                Add Experience
-            </button>
+        <div>
+
+            {this.state.experienceItems.length > 1 && (
+                <button onClick={() => this.deleteExperienceItem(this.state.experienceItems.length - 1)}>Delete</button>
+            )}
+            <button onClick={this.addExperienceItem}>Add</button>
+
+        </div>
+    
         </section>
 
             </div>
