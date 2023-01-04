@@ -23,6 +23,8 @@ class Resume extends React.Component {
               <p>School: {item.school}</p>
               <p>Degree: {item.degree}</p>
               <p>Field of Study: {item.fieldOfStudy}</p>
+              <p> From/To: {item.FromTo}</p>
+              
             </div>
           ))}   
         </section>
@@ -33,6 +35,7 @@ class Resume extends React.Component {
               <p>Company: {item.company}</p>
               <p>Position: {item.position}</p>
               <p>Description: {item.description}</p>
+              <p> From/To: {item.FromToXp}</p>
             </div>
             ))}
             </section>

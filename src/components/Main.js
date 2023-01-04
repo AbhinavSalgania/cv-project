@@ -9,15 +9,15 @@ class Main extends React.Component {
         name: '',
         email: '',
         phone: '',
-        educationItems: [{ school: "", degree: "", fieldOfStudy: "" }],
-        experienceItems: [{ company: "", position: "", description: "" }]
+        educationItems: [{ school: "", degree: "", fieldOfStudy: "", FromTo: "" }],
+        experienceItems: [{ company: "", position: "", description: "", FromToXp: "" }]
       };
     }
 
     addEducationItem = () => {
         this.setState((prevState) => ({
             educationItems: [...prevState.educationItems, {
-                school: '', degree: '', fieldOfStudy: ''
+                school: '', degree: '', fieldOfStudy: '', FromTo: ''
             }]
         }));
     };
@@ -25,7 +25,7 @@ class Main extends React.Component {
     addExperienceItem = () => { 
         this.setState((prevState) => ({
             experienceItems: [...prevState.experienceItems, {
-                company: '', position: '', description: ''
+                company: '', position: '', description: '', FromToXp: ''
             }]
         }));
     };
@@ -114,6 +114,15 @@ class Main extends React.Component {
                     placeholder="Gender Studies"
                     onChange={event => this.handleChange(event, "educationItems", index)}
                     />
+                    <br />
+                    <label htmlFor={`FromTo-${index}`}>From/To:</label>
+                    <input
+                    type="text"
+                    id={`FromTo-${index}`}
+                    name="FromTo"
+                    placeholder="2010-2014"
+                    onChange={event => this.handleChange(event, "educationItems", index)}
+                    />
                 </div>
                 ))}
                 <button type="button" onClick={this.addEducationItem}>
@@ -149,6 +158,15 @@ class Main extends React.Component {
                   placeholder="lorem ipsum dolem Cupidatat sunt anim incididunt nisi labore sunt nulla Lorem elit irure. Aliquip quis excepteur et nostrud enim irure nostrud officia"
                   onChange={event => this.handleChange(event, "experienceItems", index)}
                 />
+                <br />
+                    <label htmlFor={`FromToXp-${index}`}>From/To:</label>
+                    <input
+                    type="text"
+                    id={`FromToXp-${index}`}
+                    name="FromToXp"
+                    placeholder="2010-2014"
+                    onChange={event => this.handleChange(event, "educationItems", index)}
+                    />
               </div>
             ))}
             <button type="button" onClick={this.addExperienceItem}>
