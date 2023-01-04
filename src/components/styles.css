@@ -9,6 +9,7 @@ body {
   height: 100%;
 }
 
+/*Header*/
 .title{
   font-size: 2.2em;
   font-weight: bold;
@@ -21,30 +22,28 @@ body {
   
 }
 
-
-
-
-
-
-
-
+/*Grid to display Resume below Main*/
 main {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
   justify-content: center;
-  width: 100%;
+  align-items: center;
   background-color: rgb(43,43,43);
 }
 
+/*Information*/
 .information-box {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: #fafafa;
   border-radius: 10px;
   padding: 2em;
-  width: 80%;
-  display: block;
+  width: 60%;
+  grid-area: 1 / 1 / 2 / 2;
+  margin: 0 auto;
+  margin-top: 1em;
 }
-
 
 section {
   margin: 1em 0;
@@ -84,16 +83,29 @@ textarea {
   min-height: 3em;
 }
 
+/*Resume*/
+.resume-box {
+  background-color: rgb(255, 255, 255);
+  width: 67%;
+  margin: 0 auto;
+}
 
+.resume-box h2 {
+  color: rgb(43, 43, 43);
+}
 
+.resume-box p {
+  color: rgb(43, 43, 43);
+}
 
+.resume-box h1{
+  color: rgb(43, 43, 43);
+}
 
-
-
-
+/*Footer*/
 footer{
   position: relative;
-  bottom: -465px;
+  bottom: -1em;
   width: 100%;
   background-color: rgb(110,110,110);
   text-align: center;
@@ -110,30 +122,4 @@ a{
   
 footer.visible{
   bottom: 0;
-}
-
-
-
-
-
-
-
-
-
-
-.resume-box {
-  background-color: rgb(255, 255, 255);
-  
-}
-
-.resume-box h2 {
-  color: rgb(43, 43, 43);
-}
-
-.resume-box p {
-  color: rgb(43, 43, 43);
-}
-
-.resume-box h1{
-  color: rgb(43, 43, 43);
 }

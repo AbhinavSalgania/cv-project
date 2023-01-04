@@ -9,26 +9,49 @@ class Main extends React.Component {
         name: '',
         email: '',
         phone: '',
-        school: '',
-        degree: '',
-        fieldOfStudy: '',
-        company: '',
-        position: '',
-        description: ''
+        educationItems: [{ school: "", degree: "", fieldOfStudy: "" }],
+        experienceItems: [{ company: "", position: "", description: "" }]
       };
     }
 
-    handleChange = (event) => {
+    addEducationItem = () => {
+        this.setState((prevState) => ({
+            educationItems: [...prevState.educationItems, {
+                school: '', degree: '', fieldOfStudy: ''
+            }]
+        }));
+    };
+
+    addExperienceItem = () => { 
+        this.setState((prevState) => ({
+            experienceItems: [...prevState.experienceItems, {
+                company: '', position: '', description: ''
+            }]
+        }));
+    };
+
+    handleChange = (event, arrayType, index) => {
         const name = event.target.name;
         const value = event.target.value;
-        this.setState((prevState) => ({
-            ...prevState,
-            [name]: value
-          }));
-          
-      }
-      
-  
+
+        this.setState((prevState) => {
+            const newArray = [...prevState[arrayType]];
+            newArray[index] = { ...newArray[index], [name]: value };
+            return {
+                ...prevState,
+                [arrayType]: newArray
+            };
+        });
+    }
+
+    handleChangePersonal = (event) => {
+        console.log(event)
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState((prevState) => ({ ...prevState,   [name]: value })
+    );
+}
+
     render() {
       return (
         <main>
@@ -41,7 +64,7 @@ class Main extends React.Component {
                         id="name"
                         name="name"
                         placeholder="John Doe"
-                        onChange= {this.handleChange}             />
+                        onChange= {this.handleChangePersonal}             />
                     
                     <br />
                     <label htmlFor="email">Email:</label>
@@ -50,7 +73,7 @@ class Main extends React.Component {
                         id="email"
                         name = "email"
                         placeholder="johndoe@email.com"
-                        onChange= {this.handleChange}             />
+                        onChange= {this.handleChangePersonal}             />
                     
                     <br />
                     <label htmlFor="phone">Phone:</label>
@@ -59,71 +82,88 @@ class Main extends React.Component {
                         id="phone"
                         name = "phone"
                         placeholder="xxx-xxx-xxx"
-                        onChange= {this.handleChange}              />
+                        onChange= {this.handleChangePersonal}              />
                 </section>
-                <section>
-                    <h2>Education</h2>
-                    <label htmlFor="school">School:</label>
+            <section>
+                <h2>Education</h2>
+                {this.state.educationItems.map((item, index) => (
+                <div key={index}>
+                    <label htmlFor={`school-${index}`}>School:</label>
                     <input
-                        type="text"
-                        id="school"
-                        name = "school"
-                        placeholder="Harvard"
-                        onChange= {this.handleChange}              />
+                    type="text"
+                    id={`school-${index}`}
+                    name="school"
+                    placeholder="Harvard"
+                    onChange={event => this.handleChange(event, "educationItems", index)}
+                    />
                     <br />
-                    <label htmlFor="degree">Degree:</label>
+                    <label htmlFor={`degree-${index}`}>Degree:</label>
                     <input
-                        type="text"
-                        id="degree"
-                        name = "degree"
-                        placeholder="Bachelors"
-                        onChange= {this.handleChange}              />
+                    type="text"
+                    id={`degree-${index}`}
+                    name="degree"
+                    placeholder="Bachelors"
+                    onChange={event => this.handleChange(event, "educationItems", index)}
+                    />
                     <br />
-                    <label htmlFor="fieldOfStudy">Field of Study:</label>
+                    <label htmlFor={`fieldOfStudy-${index}`}>Field of Study:</label>
                     <input
-                        type="text"
-                        id="fieldOfStudy"
-                        name = "fieldOfStudy"
-                        placeholder="Gender Studies"
-                        onChange= {this.handleChange}              />
-                </section>
-                <section>
-                    <h2>Experience</h2>
-                    <label htmlFor="company">Company:</label>
-                    <input
-                        type="text"
-                        id="company"
-                        name = "company"
-                        placeholder="Tesla"
-                        onChange= {this.handleChange}              />
-                    <br />
-                    <label htmlFor="position">Position:</label>
-                    <input
-                        type="text"
-                        id="position"
-                        name = "position"
-                        placeholder="Robot Maker"
-                        onChange= {this.handleChange}              />
-                    <br />
-                    <label htmlFor="description">Description:</label>
-                    <textarea 
-                        id="description" 
-                        name = "description"
-                        placeholder = "lorem ipsum dolem Cupidatat sunt anim incididunt nisi labore sunt nulla Lorem elit irure. Aliquip quis excepteur et nostrud enim irure nostrud officia" 
-                        onChange= {this.handleChange}                />
-                </section>
+                    type="text"
+                    id={`fieldOfStudy-${index}`}
+                    name="fieldOfStudy"
+                    placeholder="Gender Studies"
+                    onChange={event => this.handleChange(event, "educationItems", index)}
+                    />
+                </div>
+                ))}
+                <button type="button" onClick={this.addEducationItem}>
+                Add Education
+                </button>
+            </section>
+        <section>
+            <h2>Experience</h2>
+            {this.state.experienceItems.map((item, index) => (
+              <div key={index}>
+                <label htmlFor={`company-${index}`}>Company:</label>
+                <input
+                  type="text"
+                  id={`company-${index}`}
+                  name="company"
+                  placeholder="Tesla"
+                  onChange={event => this.handleChange(event, "experienceItems", index)}
+                />
+                <br />
+                <label htmlFor={`position-${index}`}>Position:</label>
+                <input
+                  type="text"
+                  id={`position-${index}`}
+                  name="position"
+                  placeholder="Robot Maker"
+                  onChange={event => this.handleChange(event, "experienceItems", index)}
+                />
+                <br />
+                <label htmlFor={`description-${index}`}>Description:</label>
+                <textarea
+                  id={`description-${index}`}
+                  name="description"
+                  placeholder="lorem ipsum dolem Cupidatat sunt anim incididunt nisi labore sunt nulla Lorem elit irure. Aliquip quis excepteur et nostrud enim irure nostrud officia"
+                  onChange={event => this.handleChange(event, "experienceItems", index)}
+                />
+              </div>
+            ))}
+            <button type="button" onClick={this.addExperienceItem}>
+                Add Experience
+            </button>
+        </section>
+
             </div>
             <div className = "resume-box">
                 <Resume
                     name={this.state.name}
                     email={this.state.email}
                     phone={this.state.phone}
-                    school={this.state.school}
-                    degree={this.state.degree}
-                    fieldOfStudy={this.state.fieldOfStudy}
-                    company={this.state.company}
-                    position={this.state.position}
-                    description={this.state.description}
+                    educationItems={this.state.educationItems}
+                    experienceItems={this.state.experienceItems}
                     />
             </div>
         </main>

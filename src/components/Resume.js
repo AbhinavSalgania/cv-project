@@ -4,9 +4,9 @@ import './styles.css';
 class Resume extends React.Component {
   render() {
     const{
-        name, email, phone, school, degree, 
-        fieldOfStudy, company, position, description }
-        = this.props;
+        name, email, phone, educationItems, experienceItems
+        } = this.props;
+
     return (
         <div className="resume-box">
             <h1>Resume</h1>
@@ -16,19 +16,27 @@ class Resume extends React.Component {
                 <p>Email: {email}</p>
                 <p>Phone: {phone}</p>
             </section>
-            <section>
-                <h2>Education</h2>
-                <p>School: {school}</p>
-                <p>Degree: {degree}</p>
-                <p>Field of Study: {fieldOfStudy}</p>
-            </section>
+        <section>
+          <h2>Education</h2>
+          {educationItems.map((item, index) => (
+            <div key={index}>
+              <p>School: {item.school}</p>
+              <p>Degree: {item.degree}</p>
+              <p>Field of Study: {item.fieldOfStudy}</p>
+            </div>
+          ))}   
+        </section>
             <section>
                 <h2>Experience</h2>
-                <p>Company: {company}</p>
-                <p>Position: {position}</p>
-                <p>Description: {description}</p>
+                {experienceItems.map((item, index) => (
+            <div key={index}>
+              <p>Company: {item.company}</p>
+              <p>Position: {item.position}</p>
+              <p>Description: {item.description}</p>
+            </div>
+            ))}
             </section>
-        </div>
+    </div>
     );
     } 
 }  
