@@ -1,7 +1,13 @@
 # Open the website here:  <a href="https://cv-project-49d19.web.app/">CV MAKER</a> 
 
 
+## Features to add:
 
+* Add design to make it a proper resume
+* Add download resume functionality
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
